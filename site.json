@@ -1,0 +1,7 @@
+{
+  "home": {
+    "image": "/assets/game-hero.jpg",
+    "ko": {"brand": "단어 슈팅 게임", "coming": "개발 중", "title": "단어 슈팅 게임", "body": "글로우매터의 새로운 게임을 준비하고 있습니다.", "company": "글로우매터", "spot": "스팟 더 워드"},
+    "en": {"brand": "WORD SHOOTING GAME", "coming": "COMING SOON", "title": "Word Shooting Game", "body": "A new game from Glow Matter. In development.", "company": "Glow Matter", "spot": "Spot the Word"}
+  }
+}

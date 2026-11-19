@@ -1,0 +1,32 @@
+media:
+  input: assets
+  output: /assets
+  extensions: [png, jpg, jpeg, webp]
+  rename: safe
+settings:
+  content:
+    merge: true
+content:
+  - name: home
+    label: 게임 홈
+    type: file
+    path: site.json
+    format: json
+    fields:
+      - name: home
+        label: 홈 화면
+        type: object
+        fields:
+          - {name: image, label: 배경 이미지, type: image, required: true}
+          - name: ko
+            label: 한국어
+            type: object
+            fields: &game_text
+              - {name: title, label: 게임 이름, type: string, required: true}
+              - {name: brand, label: 상단 이름, type: string, required: true}
+              - {name: coming, label: 출시 상태, type: string, required: true}
+              - {name: body, label: 소개 문구, type: text}
+          - name: en
+            label: 영어
+            type: object
+            fields: *game_text

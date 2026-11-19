@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Word Shooting Game | Glow Matter</title>
+  <style>
+    :root { color-scheme: dark; background: #0a0a0a; color: #f1f5e8; font: 16px/1.5 system-ui, sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    a { color: inherit; text-decoration: none; }
+    button { color: inherit; font: inherit; cursor: pointer; }
+    a:focus-visible, button:focus-visible { outline: 2px solid #c5ff26; outline-offset: 5px; }
+    header { position: absolute; z-index: 2; top: 0; left: 0; width: 100%; padding: 26px clamp(20px, 5vw, 80px); display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+    .brand { font-weight: 800; letter-spacing: .05em; font-size: 14px; }
+    .company { color: #c5ff26; font-weight: 750; }
+    main { min-height: 100svh; position: relative; isolation: isolate; display: flex; align-items: flex-end; padding: 150px clamp(24px, 7vw, 110px) 100px; }
+    .art { position: absolute; z-index: -2; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%; }
+    main::before { content: ''; position: absolute; z-index: -1; inset: 0; background: linear-gradient(0deg, #0a0a0a, rgb(10 10 10 / 15%) 90%), linear-gradient(90deg, rgb(10 10 10 / 65%), transparent); }
+    .content { max-width: 1000px; }
+    .coming { display: inline-block; padding: 6px 12px; border: 1px solid #c5ff26; color: #c5ff26; font-size: 13px; font-weight: 700; letter-spacing: .1em; }
+    h1 { font-size: clamp(42px, 8vw, 110px); line-height: 1.02; letter-spacing: -.055em; margin: 20px 0; overflow-wrap: anywhere; }
+    .body { margin: 0; font-size: clamp(16px, 2vw, 21px); }
+    .links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    .links a { display: flex; justify-content: center; align-items: center; min-height: 48px; padding: 10px 24px; border: 1px solid #f1f5e8; font-size: 14px; }
+    .links a:hover { color: #c5ff26; border-color: #c5ff26; }
+    .language { position: absolute; bottom: 20px; right: clamp(20px, 5vw, 80px); display: flex; align-items: center; gap: 8px; }
+    .language button { min-height: 44px; padding: 5px; background: transparent; border: 0; font-size: 13px; }
+    .language button[aria-pressed=true] { color: #c5ff26; text-decoration: underline; text-underline-offset: 4px; }
+    @media(max-width:600px) { main { min-height: 100svh; padding-bottom: 100px; } header { padding: 20px; } .art { object-position: 53% center; } .links a { flex: 1; } }
+  </style>
+</head>
+<body>
+  <header><span class="brand" data-copy="brand">WORD SHOOTING GAME</span><a class="company" href="https://main-preview.glow-matter-website.pages.dev/" data-copy="company">Glow Matter</a></header>
+  <main>
+    <img class="art" src="%%HERO%%" alt="" fetchpriority="high">
+    <div class="content">
+      <span class="coming" data-copy="coming">COMING SOON</span>
+      <h1 data-copy="title">Word Shooting Game</h1>
+      <p class="body" data-copy="body">A new game from Glow Matter. In development.</p>
+      <div class="links"><a href="https://main-preview.glow-matter-website.pages.dev/" data-copy="company">Glow Matter</a><a href="https://main-preview.spot-the-word-website.pages.dev/" data-copy="spot">Spot the Word</a></div>
+    </div>
+    <div class="language" role="group" aria-label="Language"><button type="button" data-language="en" aria-pressed="true">English</button><span>/</span><button type="button" data-language="ko" aria-pressed="false">한국어</button></div>
+  </main>
+  <script>
+    const copy = %%COPY%%;
+    document.querySelectorAll('[data-copy]').forEach(item => item.textContent = copy.en[item.dataset.copy]);
+    document.querySelectorAll('[data-language]').forEach(button => button.addEventListener('click', () => {
+      const language = button.dataset.language;
+      document.documentElement.lang = language;
+      document.querySelectorAll('[data-copy]').forEach(item => item.textContent = copy[language][item.dataset.copy]);
+      document.querySelectorAll('[data-language]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+    }));
+  </script>
+</body>
+</html>
