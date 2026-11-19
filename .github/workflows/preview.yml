@@ -17,13 +17,6 @@ jobs:
         with:
           node-version: '22'
       - run: node build.mjs
-      - name: Prepare the holding page
-        run: mkdir -p holding && printf '%s' '<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex"><title>Word Shooting Game</title><p>Coming soon.</p>' > holding/index.html
-      - uses: cloudflare/wrangler-action@v4
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy holding --project-name=word-shooting-game-website --branch=production
       - uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
