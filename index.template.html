@@ -28,6 +28,7 @@
     .language { position: absolute; bottom: 20px; right: clamp(20px, 5vw, 80px); display: flex; align-items: center; gap: 8px; }
     .language button { min-height: 44px; padding: 5px; background: transparent; border: 0; font-size: 13px; }
     .language button[aria-pressed=true] { color: #c5ff26; text-decoration: underline; text-underline-offset: 4px; }
+    footer { padding: 22px 24px; text-align: center; font-size: 13px; background: #0a0a0a; color: #f1f5e8; }
     @media(max-width:600px) { main { min-height: 100svh; padding-bottom: 100px; } header { padding: 20px; } .art { object-position: 53% center; } .links a { flex: 1; } }
   </style>
 </head>
@@ -43,6 +44,7 @@
     </div>
     <div class="language" role="group" aria-label="Language"><button type="button" data-language="en" aria-pressed="true">English</button><span>/</span><button type="button" data-language="ko" aria-pressed="false">한국어</button></div>
   </main>
+  <footer>© 2026 Glow Matter Co., Ltd. All rights reserved.</footer>
   <script>
     const copy = %%COPY%%;
     document.querySelectorAll('[data-copy]').forEach(item => item.textContent = copy.en[item.dataset.copy]);
